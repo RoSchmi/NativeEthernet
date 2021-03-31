@@ -54,11 +54,22 @@ int DNSClient::getHostByName(const char* aHostname, IPAddress& aResult, uint16_t
     if (strcmp(aHostname, (char *)"prax47.table.core.windows.net") == 0 )
     {
         aResult = IPAddress((uint8_t)52, (uint8_t)245, (uint8_t)40, (uint8_t)70);
+        //#if SERIAL_PRINT == 1
         Serial.println("Took preselected IP-Address: prax47.table.core.windows.net");
+        //#endif
         return 1;
     }
-    Serial.println("Going to resolve IP-Address");
+    // 162,159,200,123
+    if (strcmp(aHostname, (char *)"pool.ntp.org") == 0 )
+    {
+        aResult = IPAddress((uint8_t)162, (uint8_t)159, (uint8_t)200, (uint8_t)123);
+        //#if SERIAL_PRINT == 1
+        Serial.println("Took preselected IP-Address: pool.ntp.org");
+        //#endif
+        return 1;
+    }
 
+    Serial.println("Going to resolve IP-Address");
 
     resolveDone = 0;
     struct fnet_dns_params dns_params = {
