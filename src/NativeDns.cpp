@@ -49,6 +49,13 @@ void DNSClient::fnet_dns_callback(const fnet_dns_resolved_addr_t* addr_list, lon
 
 int DNSClient::getHostByName(const char* aHostname, IPAddress& aResult, uint16_t timeout)
 {
+    // RoSchmi
+    /*
+    if (strcmp(aHostname, (char *)"prax47.table.core.windows.net") == 0 )
+    {
+        aResult = IPAddress()
+    }
+    */
     resolveDone = 0;
     struct fnet_dns_params dns_params = {
         .dns_server_addr = {
