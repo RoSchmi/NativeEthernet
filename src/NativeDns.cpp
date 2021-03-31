@@ -50,12 +50,16 @@ void DNSClient::fnet_dns_callback(const fnet_dns_resolved_addr_t* addr_list, lon
 int DNSClient::getHostByName(const char* aHostname, IPAddress& aResult, uint16_t timeout)
 {
     // RoSchmi
-    /*
+    // 52.245.40.70
     if (strcmp(aHostname, (char *)"prax47.table.core.windows.net") == 0 )
     {
-        aResult = IPAddress()
+        aResult = IPAddress((uint8_t)52, (uint8_t)245, (uint8_t)40, (uint8_t)70);
+        Serial.println("Took preselected IP-Address: prax47.table.core.windows.net");
+        return 1;
     }
-    */
+    Serial.println("Going to resolve IP-Address");
+
+
     resolveDone = 0;
     struct fnet_dns_params dns_params = {
         .dns_server_addr = {
